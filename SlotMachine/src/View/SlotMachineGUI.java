@@ -29,10 +29,10 @@ public class SlotMachineGUI extends JFrame {
 	private JTextField txtKullaniciAdi;
 	JPanel panelKullaniciBilgileri = new JPanel();
 	JLabel lblKullaniciBilgileri = new JLabel("Oyuncu Bilgileri");
-	JLabel lblOyuncuAdi = new JLabel("Ad\u0131n\u0131n\u0131z\u0131 Giriniz:");
-	JButton btnBasla = new JButton("Baþla");
+	JLabel lblOyuncuAdi = new JLabel("Adinizi Giriniz:");
+	JButton btnBasla = new JButton("Basla");
 	JPanel panelOyunAlani = new JPanel();
-	JLabel lblOyunAlan = new JLabel("Oyun Alan\u0131");
+	JLabel lblOyunAlan = new JLabel("Oyun Alani");
 	JButton btnSlot3 = new JButton("");
 	JButton btnSlot2 = new JButton("");
 	JButton btnSlot1 = new JButton("");
@@ -47,7 +47,7 @@ public class SlotMachineGUI extends JFrame {
 	JLabel lblPuanOyuncuAdi = new JLabel("Oyuncu");
 	JLabel lblPuanOyuncuSkor = new JLabel("0");
 	JButton btnYenidenOyna = new JButton("Yeniden Oyna");
-	JButton btnCik = new JButton("Çýk");
+	JButton btnCik = new JButton("Cik");
 	int money = 100;
 	String[] skorData = new String[10];
 	static int i;
@@ -66,9 +66,13 @@ public class SlotMachineGUI extends JFrame {
 		});
 	}
 
+	public void SlotGecis() {
+	}
+
 	public void RandomBTN() {
+		SlotGecis();
 		int random_1 = 1, random_2 = 1, random_3 = 1;
-		try {// Oyunu Yavaþlatýyor
+		try {// Oyunu Yavaslatiyor
 			Thread.sleep(400);
 		} catch (InterruptedException e1) {
 			e1.printStackTrace();
@@ -84,17 +88,17 @@ public class SlotMachineGUI extends JFrame {
 		if (random_1 == random_2 && random_3 == random_2) {
 			money += 300;
 			lblWinOrLose.setText(
-					"Tebrikler " + lblPuanOyuncuAdi.getText().toUpperCase() + " 300$ Kazandin Güncel Paran " + money);
+					"Tebrikler " + lblPuanOyuncuAdi.getText().toUpperCase() + " 300$ Kazandin Guncel Paran " + money);
 			lblWinOrLose.setForeground(new Color(0, 128, 0));
 		} else if (random_1 == random_2 || random_3 == random_2 || random_3 == random_1) {
 			money += 100;
 			lblWinOrLose.setText(
-					"Tebrikler " + lblPuanOyuncuAdi.getText().toUpperCase() + " 100$ Kazandin Güncel Paran " + money);
+					"Tebrikler " + lblPuanOyuncuAdi.getText().toUpperCase() + " 100$ Kazandin Guncel Paran " + money);
 			lblWinOrLose.setForeground(new Color(59, 134, 255));
 		} else if (random_1 != random_2 || random_3 != random_2 || random_1 != random_3) {
 			money -= 50;
 			lblWinOrLose.setText(
-					"Üzgünüm " + lblPuanOyuncuAdi.getText().toUpperCase() + " 50$ Kaybettin Güncel Paran " + money);
+					"Uzgunum " + lblPuanOyuncuAdi.getText().toUpperCase() + " 50$ Kaybettin Guncel Paran " + money);
 			lblWinOrLose.setForeground(new Color(255, 0, 110));
 		}
 		lblPuanOyuncuSkor.setText(String.valueOf(money));
@@ -156,7 +160,7 @@ public class SlotMachineGUI extends JFrame {
 		btnBasla.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (txtKullaniciAdi.getText().length() == 0) {
-					JOptionPane.showMessageDialog(null, "Kullancýdý Adý Griniz!!", "Uyari",
+					JOptionPane.showMessageDialog(null, "Kullancidi Adi Griniz!!", "Uyari",
 							JOptionPane.WARNING_MESSAGE);
 				} else {
 					OyunAcik();
